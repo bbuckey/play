@@ -1,0 +1,15 @@
+
+
+@(myForm : Form[model.User])
+
+<html>
+<title>
+The form test
+</title>
+<body>
+@helper.form(action=routes.Application.formTest(), 'id -> "myForm"){
+@helper.inputText(myForm("email"))
+@helper.inputText(myForm("name"))
+} 
+</body>
+</html>

@@ -17,7 +17,9 @@ public class StringUtils {
 	
 	/**
 	 * Given the class and the object the Fields and methods
-	 * are then cycled through looking for the getters if one is found a   
+	 * are then cycled through looking for the getters if one is found a 
+	 * currently this will only work for classes that all private members are strings
+	 * or a combination of strings and raw types future implementation will allow complex types  
 	 * @param clazz
 	 * @param obj
 	 * @return
@@ -28,12 +30,14 @@ public class StringUtils {
 		Field[] fields = clazz.getDeclaredFields(); 
 		for(Field f : fields){
 			String fieldName = f.getName().toUpperCase();
+			System.err.println(fieldName);
 			for(Method m : methods){
 				String methodName = m.getName().toUpperCase();
-				if(methodName.startsWith("get") && methodName.endsWith(fieldName)){
+				System.err.println(methodName);
+				if(methodName.startsWith("GET") && methodName.endsWith(fieldName)){
 					try{
 					Object o = m.invoke(obj);
-					json += json.equals("") ? "{" + fieldName + " : " +o.toString() :  " , " + fieldName + " : " + o.toString();
+					json += json.equals("") ? "{" + f.getName() + " : " +o.toString() :  " , " + f.getName() + " : " + o.toString();
 					} catch (Throwable t){
 						throw t;
 					}

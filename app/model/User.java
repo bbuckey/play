@@ -11,5 +11,13 @@ public class User {
 		email = _email;
 		name = _name;
 	}
+	
+	public String getEmail(){
+		return this.email;
+	}
+	
+	public String getName(){
+		return this.name;
+	}
 
 }

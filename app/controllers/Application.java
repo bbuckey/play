@@ -9,6 +9,7 @@ import model.User;
 import play.api.data.FormUtils;
 import play.data.Form;
 import views.html.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import play.api.libs.json.Json;
 import utils.StringUtils;
@@ -18,7 +19,7 @@ public class Application extends Controller {
 
     public static Result index() {
 
-        return ok("It works!");
+        return ok(index.render(Form.form(User.class)));
     }
 
     public static Result test(){
@@ -34,14 +35,14 @@ public class Application extends Controller {
     	} catch(Throwable t){
     		t.printStackTrace();
     	}
-    	return ok(s);
+    	return ok(form.render(Form.form(User.class)));
     }
     
     public static Result formTest(){
     	Form<User> userForm = Form.form(User.class);
-    	userForm.bindFromRequest(request(), "email","name");
+    	userForm.bindFromRequest();
     	User user = userForm.get();
-    	return ok("Here is the User" + user);
+    	return play.mvc.Controller.redirect(controllers.routes.Application.index());
     }
     
 }

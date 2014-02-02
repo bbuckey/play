@@ -1,6 +1,4 @@
-@(myForm : Form[model.User]){
-name = "test"; email = "be@@gmail.com"
-}
+@(myForm : Form[model.User])
 
 <html>
 <title>
@@ -8,8 +6,9 @@ The form test
 </title>
 <body>
 @helper.form(action=routes.Application.formTest(), 'id -> "myForm"){
-@helper.inputText(myForm("email"))
-@helper.inputText(myForm("name"))
+@helper.inputText(myForm("email"), 'id -> "email")
+@helper.inputText(myForm("name"), 'id -> "name")
+ <input type="submit"/>
 } 
 </body>
 </html>

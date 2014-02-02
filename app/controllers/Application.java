@@ -39,8 +39,7 @@ public class Application extends Controller {
     }
     
     public static Result formTest(){
-    	Form<User> userForm = Form.form(User.class);
-    	userForm.bindFromRequest();
+    	Form<User> userForm = Form.form(User.class).bindFromRequest();;
     	User user = userForm.get();
     	return play.mvc.Controller.redirect(controllers.routes.Application.index());
     }

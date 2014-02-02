@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET		/test						controllers.Application.test()
-GET		/formUser					controllers.Application.formUser()
+GET		/form						controllers.Application.formUser()
 POST	/form						controllers.Application.formTest()
 
 # Map static resources from the /public folder to the /assets URL path

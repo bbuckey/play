@@ -23,7 +23,7 @@ public class Application extends Controller {
     }
 
     public static Result test(){
-    	return ok(views.html.test.render("this is a test"));
+    	return ok(test.render("this is a test"));
     }
  
     
